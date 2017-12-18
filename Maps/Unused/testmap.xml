@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" tiledversion="2017.12.07" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" infinite="0" nextobjectid="8">
  <tileset firstgid="1" source="test.tsx"/>
- <layer name="bg" width="20" height="20">
+ <layer name="bg_test" width="20" height="20">
   <data encoding="csv">
 625,625,625,625,625,625,625,625,625,625,625,625,625,625,625,625,625,625,625,625,
 625,625,625,625,625,625,625,625,625,625,625,625,625,625,625,625,625,625,625,625,
