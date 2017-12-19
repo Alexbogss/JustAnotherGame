@@ -1,22 +1,19 @@
-﻿Build started 18.12.2017 7:48:50.
+﻿Build started 19.12.2017 13:49:58.
      1>Project "D:\JustAnotherGame\JustAnotherGameProj\JustAnotherGameProj\JustAnotherGameProj.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          D:\VS13\VC\bin\CL.exe /c /I"D:\JustAnotherGame\Libs\SFML-2.4.2\include" /I.\ /ZI /nologo /W3 /WX- /Od /Oy- /D SFML_DYNAMIC /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Level.cpp
          Level.cpp
      1>d:\justanothergame\justanothergameproj\justanothergameproj\level.cpp(13): warning C4244: 'return' : conversion from 'double' to 'float', possible loss of data
-     1>d:\justanothergame\justanothergameproj\justanothergameproj\level.cpp(54): warning C4129: 'J' : unrecognized character escape sequence
-     1>d:\justanothergame\justanothergameproj\justanothergameproj\level.cpp(102): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
-     1>d:\justanothergame\justanothergameproj\justanothergameproj\level.cpp(103): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
-     1>d:\justanothergame\justanothergameproj\justanothergameproj\level.cpp(147): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>d:\justanothergame\justanothergameproj\justanothergameproj\level.cpp(222): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>d:\justanothergame\justanothergameproj\justanothergameproj\level.cpp(292): warning C4018: '<' : signed/unsigned mismatch
-     1>d:\justanothergame\justanothergameproj\justanothergameproj\level.cpp(303): warning C4018: '<' : signed/unsigned mismatch
-     1>d:\justanothergame\justanothergameproj\justanothergameproj\level.cpp(318): warning C4018: '<' : signed/unsigned mismatch
+     1>d:\justanothergame\justanothergameproj\justanothergameproj\level.cpp(106): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>d:\justanothergame\justanothergameproj\justanothergameproj\level.cpp(107): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>d:\justanothergame\justanothergameproj\justanothergameproj\level.cpp(153): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>d:\justanothergame\justanothergameproj\justanothergameproj\level.cpp(226): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>d:\justanothergame\justanothergameproj\justanothergameproj\level.cpp(294): warning C4018: '<' : signed/unsigned mismatch
+     1>d:\justanothergame\justanothergameproj\justanothergameproj\level.cpp(305): warning C4018: '<' : signed/unsigned mismatch
      1>d:\justanothergame\justanothergameproj\justanothergameproj\level.cpp(320): warning C4018: '<' : signed/unsigned mismatch
-     1>d:\justanothergame\justanothergameproj\justanothergameproj\level.cpp(112): warning C4700: uninitialized local variable 'layerDataElement' used
-     1>d:\justanothergame\justanothergameproj\justanothergameproj\level.cpp(121): warning C4700: uninitialized local variable 'tileElement' used
+     1>d:\justanothergame\justanothergameproj\justanothergameproj\level.cpp(322): warning C4018: '<' : signed/unsigned mismatch
        Link:
-         D:\VS13\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\JustAnotherGame\JustAnotherGameProj\Debug\JustAnotherGameProj.exe" /INCREMENTAL /NOLOGO /LIBPATH:"D:\JustAnotherGame\Libs\SFML-2.4.2\lib" /LIBPATH:.\lib "sfml-graphics.lib" "sfml-window.lib" "sfml-system.lib" Box2D.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\JustAnotherGame\JustAnotherGameProj\Debug\JustAnotherGameProj.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\JustAnotherGame\JustAnotherGameProj\Debug\JustAnotherGameProj.lib" /MACHINE:X86 Debug\Level.obj
+         D:\VS13\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\JustAnotherGame\JustAnotherGameProj\Debug\JustAnotherGameProj.exe" /INCREMENTAL /NOLOGO /LIBPATH:"D:\JustAnotherGame\Libs\SFML-2.4.2\lib" /LIBPATH:.\lib "sfml-graphics-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" Box2D.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\JustAnotherGame\JustAnotherGameProj\Debug\JustAnotherGameProj.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\JustAnotherGame\JustAnotherGameProj\Debug\JustAnotherGameProj.lib" /MACHINE:X86 Debug\Level.obj
          Debug\main.obj
          Debug\tinystr.obj
          Debug\tinyxml.obj
@@ -27,4 +24,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.67
+Time Elapsed 00:00:00.66

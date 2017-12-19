@@ -1,18 +1,9 @@
-﻿Build started 18.12.2017 9:06:05.
+﻿Build started 19.12.2017 11:18:38.
      1>Project "D:\JustAnotherGame\JustAnotherGameProj\JustAnotherGameProj\JustAnotherGameProj.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         D:\VS13\VC\bin\CL.exe /c /I"D:\JustAnotherGame\Libs\SFML-2.4.2\include" /I.\ /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Level.cpp main.cpp
-         Level.cpp
-     1>Level.cpp(13): warning C4244: 'return' : conversion from 'double' to 'float', possible loss of data
-     1>Level.cpp(106): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
-     1>Level.cpp(107): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
-     1>Level.cpp(153): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>Level.cpp(226): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>Level.cpp(296): warning C4018: '<' : signed/unsigned mismatch
-     1>Level.cpp(307): warning C4018: '<' : signed/unsigned mismatch
-     1>Level.cpp(322): warning C4018: '<' : signed/unsigned mismatch
-     1>Level.cpp(324): warning C4018: '<' : signed/unsigned mismatch
+         D:\VS13\VC\bin\CL.exe /c /I"D:\JustAnotherGame\Libs\SFML-2.4.2\include" /I.\ /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
          main.cpp
+     1>main.cpp(8): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
        Link:
          D:\VS13\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\JustAnotherGame\JustAnotherGameProj\Release\JustAnotherGameProj.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"D:\JustAnotherGame\Libs\SFML-2.4.2\lib" /LIBPATH:.\lib "sfml-graphics.lib" "sfml-window.lib" "sfml-system.lib" Box2D.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\JustAnotherGame\JustAnotherGameProj\Release\JustAnotherGameProj.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\JustAnotherGame\JustAnotherGameProj\Release\JustAnotherGameProj.lib" /MACHINE:X86 /SAFESEH Release\Level.obj
          Release\main.obj
@@ -20,11 +11,99 @@
          Release\tinyxml.obj
          Release\tinyxmlerror.obj
          Release\tinyxmlparser.obj
-         Generating code
-         Finished generating code
-         JustAnotherGameProj.vcxproj -> D:\JustAnotherGame\JustAnotherGameProj\Release\JustAnotherGameProj.exe
-     1>Done Building Project "D:\JustAnotherGame\JustAnotherGameProj\JustAnotherGameProj\JustAnotherGameProj.vcxproj" (Build target(s)).
+     1>Box2D.lib(b2World.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2World.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>Box2D.lib(b2World.obj) : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:ICF' specification
+     1>Box2D.lib(b2StackAllocator.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2StackAllocator.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>Box2D.lib(b2BlockAllocator.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2BlockAllocator.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>Box2D.lib(b2ContactManager.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2ContactManager.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>Box2D.lib(b2BroadPhase.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2BroadPhase.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>Box2D.lib(b2Fixture.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2Fixture.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>Box2D.lib(b2Body.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2Body.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>Box2D.lib(b2Joint.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2Joint.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>Box2D.lib(b2Island.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2Island.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>Box2D.lib(b2Timer.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2Timer.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>Box2D.lib(b2Contact.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2Contact.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>Box2D.lib(b2TimeOfImpact.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2TimeOfImpact.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>Box2D.lib(b2Distance.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2Distance.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>Box2D.lib(b2PulleyJoint.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2PulleyJoint.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>Box2D.lib(b2Draw.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2Draw.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>Box2D.lib(b2DynamicTree.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2DynamicTree.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>Box2D.lib(b2Settings.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2Settings.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>Box2D.lib(b2WorldCallbacks.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2WorldCallbacks.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>Box2D.lib(b2Math.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2Math.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>Box2D.lib(b2RopeJoint.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2RopeJoint.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>Box2D.lib(b2FrictionJoint.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2FrictionJoint.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>Box2D.lib(b2WeldJoint.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2WeldJoint.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>Box2D.lib(b2WheelJoint.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2WheelJoint.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>Box2D.lib(b2GearJoint.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2GearJoint.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>Box2D.lib(b2RevoluteJoint.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2RevoluteJoint.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>Box2D.lib(b2PrismaticJoint.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2PrismaticJoint.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>Box2D.lib(b2MouseJoint.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2MouseJoint.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>Box2D.lib(b2DistanceJoint.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2DistanceJoint.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>Box2D.lib(b2ContactSolver.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2ContactSolver.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>Box2D.lib(b2ChainAndPolygonContact.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2ChainAndPolygonContact.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>Box2D.lib(b2ChainAndCircleContact.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2ChainAndCircleContact.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>Box2D.lib(b2EdgeAndPolygonContact.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2EdgeAndPolygonContact.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>Box2D.lib(b2EdgeAndCircleContact.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2EdgeAndCircleContact.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>Box2D.lib(b2PolygonContact.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2PolygonContact.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>Box2D.lib(b2PolygonAndCircleContact.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2PolygonAndCircleContact.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>Box2D.lib(b2CircleContact.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2CircleContact.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>Box2D.lib(b2Collision.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2Collision.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>Box2D.lib(b2CollideEdge.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2CollideEdge.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>Box2D.lib(b2ChainShape.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2ChainShape.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>Box2D.lib(b2EdgeShape.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2EdgeShape.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>Box2D.lib(b2CollidePolygon.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2CollidePolygon.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>Box2D.lib(b2CollideCircle.obj) : error LNK2038: mismatch detected for '_MSC_VER': value '1600' doesn't match value '1800' in Level.obj
+     1>Box2D.lib(b2CollideCircle.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in Level.obj
+     1>LINK : warning LNK4098: defaultlib 'MSVCRTD' conflicts with use of other libs; use /NODEFAULTLIB:library
+     1>Box2D.lib(b2Body.obj) : error LNK2001: unresolved external symbol "__declspec(dllimport) public: static float __cdecl std::numeric_limits<float>::infinity(void)" (__imp_?infinity@?$numeric_limits@M@std@@SAMXZ)
+     1>Box2D.lib(b2FrictionJoint.obj) : error LNK2001: unresolved external symbol "__declspec(dllimport) public: static float __cdecl std::numeric_limits<float>::infinity(void)" (__imp_?infinity@?$numeric_limits@M@std@@SAMXZ)
+     1>Box2D.lib(b2GearJoint.obj) : error LNK2001: unresolved external symbol "__declspec(dllimport) public: static float __cdecl std::numeric_limits<float>::infinity(void)" (__imp_?infinity@?$numeric_limits@M@std@@SAMXZ)
+     1>Box2D.lib(b2MouseJoint.obj) : error LNK2001: unresolved external symbol "__declspec(dllimport) public: static float __cdecl std::numeric_limits<float>::infinity(void)" (__imp_?infinity@?$numeric_limits@M@std@@SAMXZ)
+     1>D:\JustAnotherGame\JustAnotherGameProj\Release\JustAnotherGameProj.exe : fatal error LNK1120: 1 unresolved externals
+     1>Done Building Project "D:\JustAnotherGame\JustAnotherGameProj\JustAnotherGameProj\JustAnotherGameProj.vcxproj" (Build target(s)) -- FAILED.
 
-Build succeeded.
+Build FAILED.
 
-Time Elapsed 00:00:01.84
+Time Elapsed 00:00:00.52

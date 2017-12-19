@@ -59,10 +59,10 @@ bool Level::LoadFromFile(std::string fname)
 		return false;
 	}
 
-	/*
+	
 		// "Очищение" тайлсета от севта (109, 159, 185)
 	img.createMaskFromColor(sf::Color(109, 159, 185));
-	*/
+	
 		// Загрузка текстуры из тайлсета
 	this->tilesetImage.loadFromImage(img);
 		// Отключение расплывчивости
@@ -221,7 +221,7 @@ bool Level::LoadFromFile(std::string fname)
 
 					//	Определение и присваивание спрайта объекта
 				sf::Sprite obj_sprite;
-				obj_sprite.setTexture(this->tilesetImage);
+				obj_sprite.setTexture(tilesetImage);
 				obj_sprite.setTextureRect(sf::Rect<int>(0, 0, 0, 0));
 				obj_sprite.setPosition(x, y);
 
