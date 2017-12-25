@@ -61,7 +61,7 @@ bool Level::LoadFromFile(std::string fname)
 
 	
 		// "Очищение" тайлсета от севта (109, 159, 185)
-	img.createMaskFromColor(sf::Color(109, 159, 185));
+	//img.createMaskFromColor(sf::Color(109, 159, 185));
 	
 		// Загрузка текстуры из тайлсета
 	this->tilesetImage.loadFromImage(img);
@@ -313,6 +313,11 @@ std::vector<Object> Level::GetObjects(std::string name)
 sf::Vector2i Level::GetTileSize()
 {
 	return sf::Vector2i(this->tileWidth, this->tileHeight);
+}
+
+sf::Vector2i Level::GetTileCount()
+{
+	return sf::Vector2i(this->width, this->height);
 }
 
 void Level::Draw(sf::RenderWindow &window)

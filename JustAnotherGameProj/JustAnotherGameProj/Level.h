@@ -82,6 +82,7 @@ public:
 	vector<Object> GetObjects(string name);
 	void Draw(sf::RenderWindow &window);
 	sf::Vector2i GetTileSize();
+	sf::Vector2i GetTileCount();
 };
 
 #endif

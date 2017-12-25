@@ -14,6 +14,7 @@ int main()
 	b2World world(gravity);
 
 	Vector2i tileSize = level.GetTileSize();
+	Vector2i tileCount = level.GetTileCount();
 	
 	std::vector<Object> block = level.GetObjects("block");
 
@@ -111,7 +112,7 @@ int main()
 				window.close();
 		}
 
-		world.Step(1 / 400.0f * ((coin.size() + enemy.size()) / 2.0f + 1), 1, 1);
+		world.Step(1 / 400.0f * (enemy.size() / 2.0f + 1), 1, 1);
 		
 		bool onGround = false;
 		b2Vec2 posTest = playerBody->GetPosition();
@@ -232,7 +233,23 @@ int main()
 		if (frameLimit == 120)
 		{
 			b2Vec2 pos = playerBody->GetPosition();
-			view.setCenter(pos.x + screenSize.x / 2.6, pos.y + screenSize.y / 2.85);
+			static b2Vec2 temp;
+			static bool check = true;
+			if (pos.x + screenSize.x / 2.6 < screenSize.x / 2)
+				view.setCenter(screenSize.x / 2, pos.y + screenSize.y / 2.85);
+			else if (pos.x - screenSize.x / 2.9 > tileSize.x * tileCount.x - screenSize.x / 2)
+			{
+				if (check)	temp.x = pos.x;
+				check = false;
+				view.setCenter(temp.x + screenSize.x / 2.6, pos.y + screenSize.y / 2.85);
+			}
+			else
+			{
+				view.setCenter(pos.x + screenSize.x / 2.6, pos.y + screenSize.y / 2.85);
+				check = true;
+			}
+
+
 			window.setView(view);
 			player.sprite.setPosition(pos.x, pos.y);
 
