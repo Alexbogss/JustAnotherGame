@@ -226,7 +226,7 @@ bool Level::LoadFromFile(std::string fname)
 				obj_sprite.setPosition(x, y);
 
 					//	Если не заданы размеры объекта - размерами объекта будут размеры спрайта
-				if (objectElmt->Attribute("width") != NULL)
+				if (objectElmt->Attribute("width") != NULL && (objectName == "block"))
 				{
 					obj_width = atoi(objectElmt->Attribute("width"));
 					obj_height = atoi(objectElmt->Attribute("height"));
