@@ -3,6 +3,9 @@
 
 using namespace sf;
 
+const float SCALE = 30.f;
+const float DEG = 57.29577f;
+
 int main()
 {
 	srand(time(NULL));
@@ -10,23 +13,53 @@ int main()
 	Level level;
 	level.LoadFromFile("tilemap.tmx");
 
-	b2Vec2 gravity(0.0f, 1.0f);
+	b2Vec2 gravity(0.0f, 0.3f);
 	b2World world(gravity);
 
 	sf::Vector2i tileSize = level.GetTileSize();
 	
 	std::vector<Object> block = level.GetObjects("block");
+	
 	for (int i = 0; i < block.size(); i++)
 	{
 		b2BodyDef bodyDef;
 		bodyDef.type = b2_staticBody;
-		bodyDef.position.Set(block[i].rect.left + tileSize.x / 2 * (block[i].rect.width / tileSize.x - 1),
-			block[i].rect.top + tileSize.y / 2 * (block[i].rect.height / tileSize.y - 1));
+		bodyDef.position.Set(block[i].rect.left + tileSize.x / 2 * (block[i].rect.width / tileSize.x),
+			block[i].rect.top + tileSize.y / 2 * (block[i].rect.height / tileSize.y));
 		b2Body* body = world.CreateBody(&bodyDef);
 		b2PolygonShape shape;
 		shape.SetAsBox(block[i].rect.width / 2, block[i].rect.height / 2);
 		body->CreateFixture(&shape, 1.0f);
 	}
+	
+	coin = level.GetObjects("coin");
+	for (int i = 0; i < coin.size(); i++)
+	{
+		b2BodyDef bodyDef;
+		bodyDef.type = b2_dynamicBody;
+		bodyDef.position.Set(coin[i].rect.left + tileSize.x / 2 * (coin[i].rect.width / tileSize.x),
+			coin[i].rect.top + tileSize.y / 2 * (coin[i].rect.height / tileSize.y));
+		bodyDef.fixedRotation = true;
+		b2Body* body = world.CreateBody(&bodyDef);
+		b2PolygonShape shape;
+		shape.SetAsBox(coin[i].rect.width / 2, coin[i].rect.height / 2);
+		body->CreateFixture(&shape, 1.0f);
+		coinBody.push_back(body);
+	}
+
+	/*
+	for (int i = 0; i < block.size(); i++)
+	{
+		b2BodyDef bodyDef;
+		bodyDef.type = b2_staticBody;
+		bodyDef.position.Set((block[i].rect.left + block[i].rect.width / 2 + block[i].rect.height / 2) / SCALE,
+			(block[i].rect.top + block[i].rect.width / 2 + block[i].rect.height / 2) / SCALE);
+		b2Body* body = world.CreateBody(&bodyDef);
+		b2PolygonShape shape;
+		shape.SetAsBox(block[i].rect.width / 2, block[i].rect.height / 2);
+		body->CreateFixture(&shape, 1.0f);
+	}
+	*/
 
 	player = level.GetObject("player");
 	b2BodyDef bodyDef;
@@ -51,6 +84,8 @@ int main()
 	view.reset(sf::FloatRect(0.0f, 0.0f, screenSize.x, screenSize.y));
 	view.setViewport(sf::FloatRect(0.0f, 0.0f, 2.0f, 2.0f));
 
+	//window.setFramerateLimit(60);
+
 	while (window.isOpen())
 	{
 		sf::Event event;
@@ -65,18 +100,18 @@ int main()
 
 			case sf::Event::KeyPressed:
 				if (event.key.code == sf::Keyboard::W)
-					playerBody->SetLinearVelocity(b2Vec2(0.0f, -10.0f));
+					playerBody->SetLinearVelocity(b2Vec2(0.0f, -5.0f));
 
 				if (event.key.code == sf::Keyboard::D)
-					playerBody->SetLinearVelocity(b2Vec2(5.0f, 0.0f));
+					playerBody->SetLinearVelocity(b2Vec2(3.0f, 0.0f));
 
 				if (event.key.code == sf::Keyboard::A)
-					playerBody->SetLinearVelocity(b2Vec2(-5.0f, 0.0f));
+					playerBody->SetLinearVelocity(b2Vec2(-3.0f, 0.0f));
 				break;
 			}
 		}
 
-		world.Step(1.0f / 60.0f, 3, 3);
+		
 
 		/*
 		for (b2ContactEdge* ce = playerBody->GetContactList(); ce; ce = ce->next)
@@ -94,12 +129,15 @@ int main()
 		for (int i = 0; i < coin.size(); i++)
 			coin[i].sprite.setPosition(coinBody[i]->GetPosition().x, coinBody[i]->GetPosition().y);
 
-		for (int i = 0; i < coin.size(); i++)
-			window.draw(coin[i].sprite);
 
-		window.clear();
+
+		world.Step(1 / 60.0f, 8, 3);
+
+		window.clear(Color::Cyan);
 		level.Draw(window);
 		window.draw(player.sprite);
+		for (int i = 0; i < coin.size(); i++)
+			window.draw(coin[i].sprite);
 		window.display();
 	}
 
