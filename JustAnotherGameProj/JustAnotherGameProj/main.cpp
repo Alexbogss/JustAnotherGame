@@ -44,6 +44,37 @@ int main()
 		coinBody.push_back(body);
 	}
 
+	crate = level.GetObjects("crate");
+	for (int i = 0; i < crate.size(); i++)
+	{
+		b2BodyDef bodyDef;
+		bodyDef.type = b2_dynamicBody;
+		bodyDef.position.Set(crate[i].rect.left + tileSize.x / 2 * (crate[i].rect.width / tileSize.x),
+			crate[i].rect.top + tileSize.y / 2 * (crate[i].rect.height / tileSize.y));
+		bodyDef.fixedRotation = true;
+		b2Body* body = world.CreateBody(&bodyDef);
+		b2PolygonShape shape;
+		shape.SetAsBox(crate[i].rect.width / 2, crate[i].rect.height / 2);
+		body->CreateFixture(&shape, 1.0f);
+		crateBody.push_back(body);
+	}
+
+	enemy = level.GetObjects("enemy");
+	for (int i = 0; i < enemy.size(); i++)
+	{
+		b2BodyDef bodyDef;
+		bodyDef.type = b2_dynamicBody;
+		bodyDef.position.Set(enemy[i].rect.left +
+			tileSize.x / 2 * (enemy[i].rect.width / tileSize.x),
+			enemy[i].rect.top + tileSize.y / 2 * (enemy[i].rect.height / tileSize.y ));
+		bodyDef.fixedRotation = true;
+		b2Body* body = world.CreateBody(&bodyDef);
+		b2PolygonShape shape;
+		shape.SetAsBox(enemy[i].rect.width / 2, enemy[i].rect.height / 2);
+		body->CreateFixture(&shape, 1.0f);
+		enemyBody.push_back(body);
+	}
+
 	player = level.GetObject("player");
 	b2BodyDef bodyDef;
 	bodyDef.type = b2_dynamicBody;
@@ -55,7 +86,7 @@ int main()
 	b2FixtureDef fixtureDef;
 	fixtureDef.shape = &shape;
 	fixtureDef.density = 0.5f; 
-	fixtureDef.friction = 0.1f;
+	fixtureDef.friction = 0.0f;
 	playerBody->CreateFixture(&fixtureDef);
 
 	Vector2i screenSize(800, 600);
@@ -68,6 +99,7 @@ int main()
 	view.setViewport(FloatRect(0.0f, 0.0f, 4.0f, 4.0f));
 
 	static int frameLimit = 0;
+	static int enemyLimit = 0;
 
 	while (window.isOpen())
 	{
@@ -79,7 +111,7 @@ int main()
 				window.close();
 		}
 
-		world.Step(1 / 400.0f, 1, 1);
+		world.Step(1 / 400.0f * ((coin.size() + enemy.size()) / 2.0f + 1), 1, 1);
 		
 		bool onGround = false;
 		b2Vec2 posTest = playerBody->GetPosition();
@@ -103,60 +135,128 @@ int main()
 
 		b2Vec2 playerVel = playerBody->GetLinearVelocity();
 
-		if (abs(playerVel.x) > 0.2f)
+		if (abs(playerVel.x) > 0.0f)
 		{
-			if (playerVel.x > 0.2f)
+			if (playerVel.x > 0.0f && (!Keyboard::isKeyPressed(Keyboard::D) || Keyboard::isKeyPressed(Keyboard::A)))
 			{
-				playerBody->ApplyLinearImpulse(b2Vec2(-0.05f, 0.0f), playerBody->GetWorldCenter(), true);
+				playerBody->SetLinearVelocity(b2Vec2(-0.5f, playerVel.y));
 			}
-			else if (playerVel.x < -0.2f)
+			if (playerVel.x < -0.0f && (!Keyboard::isKeyPressed(Keyboard::A) || Keyboard::isKeyPressed(Keyboard::D)))
 			{
-				playerBody->ApplyLinearImpulse(b2Vec2(0.05f, 0.0f), playerBody->GetWorldCenter(), true);
+				playerBody->SetLinearVelocity(b2Vec2(0.5f, playerVel.y));
 			}
 		}
 
-		if (Keyboard::isKeyPressed(Keyboard::D) && (playerVel.x < 2.0f)  && (onGround))
-			playerBody->ApplyLinearImpulse(b2Vec2(0.5f, 0.0f), playerBody->GetWorldCenter(), true);
-		else if (Keyboard::isKeyPressed(Keyboard::D) && (!onGround))
-			playerBody->ApplyLinearImpulse(b2Vec2(0.05f, 0.0f), playerBody->GetWorldCenter(), true);
+		if (Keyboard::isKeyPressed(Keyboard::D) && (playerVel.x < 2.5f)  && (onGround))
+			playerBody->ApplyLinearImpulse(b2Vec2(0.3f, 0.0f), playerBody->GetWorldCenter(), true);
+		else if (Keyboard::isKeyPressed(Keyboard::D) && (playerVel.x < 1.0f) && (!onGround))
+			playerBody->ApplyLinearImpulse(b2Vec2(0.12f, 0.0f), playerBody->GetWorldCenter(), true);
 			
-		if (Keyboard::isKeyPressed(Keyboard::A) && (playerVel.x > -2.0f) && (onGround))
-			playerBody->ApplyLinearImpulse(b2Vec2(-0.5f, 0.0f), playerBody->GetWorldCenter(), true);
-		
-		else if (Keyboard::isKeyPressed(Keyboard::A) && (!onGround))
-			playerBody->ApplyLinearImpulse(b2Vec2(-0.05f, 0.0f), playerBody->GetWorldCenter(), true);
+		if (Keyboard::isKeyPressed(Keyboard::A) && (playerVel.x > -2.5f) && (onGround))
+			playerBody->ApplyLinearImpulse(b2Vec2(-0.3f, 0.0f), playerBody->GetWorldCenter(), true);
+		else if (Keyboard::isKeyPressed(Keyboard::A) && (playerVel.x > -1.0f) && (!onGround))
+			playerBody->ApplyLinearImpulse(b2Vec2(-0.12f, 0.0f), playerBody->GetWorldCenter(), true);
 			
-
 		if (Keyboard::isKeyPressed(Keyboard::W) && onGround && (playerVel.y > -3.0f))
-			playerBody->ApplyLinearImpulse(b2Vec2(0.0f, -0.3f), playerBody->GetWorldCenter(), true);
-		
-		
+			playerBody->ApplyLinearImpulse(b2Vec2(0.0f, -0.7f), playerBody->GetWorldCenter(), true);
 
-		/*
-		for (b2ContactEdge* ce = playerBody->GetContactList(); ce; ce = ce->next)
+		bool check = false;
+
+		enemyLimit++;
+
+		if (enemyLimit == 320 && ((coin.size() > 0) || (enemy.size() > 0)))
 		{
-			b2Contact* contact = ce->contact;
+			enemyLimit = 0;
+			for (b2ContactEdge* ce = playerBody->GetContactList(); ce; ce = ce->next)
+			{
+				b2Contact* contact = ce->contact;
+
+				if (coin.size() > 0)
+				{
+					for (int i = 0; i < coinBody.size(); i++)
+					{
+						if (contact->GetFixtureA() == coinBody[i]->GetFixtureList())
+						{
+							coinBody[i]->DestroyFixture(coinBody[i]->GetFixtureList());
+							coin.erase(coin.begin() + i);
+							coinBody.erase(coinBody.begin() + i);
+							check = true;
+							break;
+						}
+					}
+				}
+
+				if (enemy.size() > 0)
+				{
+					for (int i = 0; i < enemyBody.size(); i++)
+					{
+						if (contact->GetFixtureA() == enemyBody[i]->GetFixtureList())
+						{
+							if (playerBody->GetPosition().y < enemyBody[i]->GetPosition().y)
+							{
+								playerBody->SetLinearVelocity(b2Vec2(0.0f, -3.0f));
+
+								enemyBody[i]->DestroyFixture(enemyBody[i]->GetFixtureList());
+								enemy.erase(enemy.begin() + i);
+								enemyBody.erase(enemyBody.begin() + i);
+							}
+							else
+							{
+								int tmp = (playerBody->GetPosition().x < enemyBody[i]->GetPosition().x)
+									? -1 : 1;
+								playerBody->SetLinearVelocity(b2Vec2(10.0f * tmp, -2.0f));
+							}
+							check = true;
+							break;
+						}
+					}
+				}
+				if (check) break;
+			}
 		}
-		*/
+
+		if (enemyLimit == 240 && (enemy.size() > 0))
+		{
+			for (int i = 0; i < enemyBody.size(); i++)
+			{
+				if (enemyBody[i]->GetLinearVelocity() == b2Vec2_zero)
+				{
+					int tmp = (rand() % 2 == 1) ? 1 : -1;
+					enemyBody[i]->SetLinearVelocity(b2Vec2(1.0f * tmp, 0.0f));
+				}
+			}
+		}
 
 		frameLimit++;
-		if (frameLimit == 60)
+
+		if (frameLimit == 120)
 		{
 			b2Vec2 pos = playerBody->GetPosition();
 			view.setCenter(pos.x + screenSize.x / 2.6, pos.y + screenSize.y / 2.85);
 			window.setView(view);
-
 			player.sprite.setPosition(pos.x, pos.y);
 
 			for (int i = 0; i < coin.size(); i++)
 				coin[i].sprite.setPosition(coinBody[i]->GetPosition().x, coinBody[i]->GetPosition().y);
 
+			for (int i = 0; i < crate.size(); i++)
+				crate[i].sprite.setPosition(crateBody[i]->GetPosition().x, crateBody[i]->GetPosition().y);
+
+			for (int i = 0; i < enemy.size(); i++)
+				enemy[i].sprite.setPosition(enemyBody[i]->GetPosition().x, enemyBody[i]->GetPosition().y);
+
 			window.clear(Color::Color(0xAB, 0xF9, 0xFF, 0xFF));
 			level.Draw(window);
 			window.draw(player.sprite);
+
 			for (int i = 0; i < coin.size(); i++)
 				window.draw(coin[i].sprite);
 
+			for (int i = 0; i < crate.size(); i++)
+				window.draw(crate[i].sprite);
+
+			for (int i = 0; i < enemy.size(); i++)
+				window.draw(enemy[i].sprite);
 
 			window.display();
 

@@ -1,4 +1,4 @@
-﻿Build started 25.12.2017 22:32:55.
+﻿Build started 26.12.2017 0:10:51.
      1>Project "D:\JustAnotherGame\JustAnotherGameProj\JustAnotherGameProj\JustAnotherGameProj.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          D:\VS13\VC\bin\CL.exe /c /I"D:\JustAnotherGame\Libs\SFML-2.4.2\include" /I.\ /ZI /nologo /W3 /WX- /Od /Oy- /D SFML_DYNAMIC /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
@@ -10,12 +10,25 @@
      1>d:\justanothergame\justanothergameproj\justanothergameproj\main.cpp(33): warning C4018: '<' : signed/unsigned mismatch
      1>d:\justanothergame\justanothergameproj\justanothergameproj\main.cpp(38): warning C4244: 'argument' : conversion from 'int' to 'float32', possible loss of data
      1>d:\justanothergame\justanothergameproj\justanothergameproj\main.cpp(42): warning C4244: 'argument' : conversion from 'int' to 'float32', possible loss of data
-     1>d:\justanothergame\justanothergameproj\justanothergameproj\main.cpp(50): warning C4244: 'argument' : conversion from 'int' to 'float32', possible loss of data
-     1>d:\justanothergame\justanothergameproj\justanothergameproj\main.cpp(54): warning C4244: 'argument' : conversion from 'int' to 'float32', possible loss of data
-     1>d:\justanothergame\justanothergameproj\justanothergameproj\main.cpp(67): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>d:\justanothergame\justanothergameproj\justanothergameproj\main.cpp(146): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>d:\justanothergame\justanothergameproj\justanothergameproj\main.cpp(151): warning C4018: '<' : signed/unsigned mismatch
-     1>d:\justanothergame\justanothergameproj\justanothergameproj\main.cpp(157): warning C4018: '<' : signed/unsigned mismatch
+     1>d:\justanothergame\justanothergameproj\justanothergameproj\main.cpp(48): warning C4018: '<' : signed/unsigned mismatch
+     1>d:\justanothergame\justanothergameproj\justanothergameproj\main.cpp(53): warning C4244: 'argument' : conversion from 'int' to 'float32', possible loss of data
+     1>d:\justanothergame\justanothergameproj\justanothergameproj\main.cpp(57): warning C4244: 'argument' : conversion from 'int' to 'float32', possible loss of data
+     1>d:\justanothergame\justanothergameproj\justanothergameproj\main.cpp(63): warning C4018: '<' : signed/unsigned mismatch
+     1>d:\justanothergame\justanothergameproj\justanothergameproj\main.cpp(69): warning C4244: 'argument' : conversion from 'int' to 'float32', possible loss of data
+     1>d:\justanothergame\justanothergameproj\justanothergameproj\main.cpp(73): warning C4244: 'argument' : conversion from 'int' to 'float32', possible loss of data
+     1>d:\justanothergame\justanothergameproj\justanothergameproj\main.cpp(81): warning C4244: 'argument' : conversion from 'int' to 'float32', possible loss of data
+     1>d:\justanothergame\justanothergameproj\justanothergameproj\main.cpp(85): warning C4244: 'argument' : conversion from 'int' to 'float32', possible loss of data
+     1>d:\justanothergame\justanothergameproj\justanothergameproj\main.cpp(98): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>d:\justanothergame\justanothergameproj\justanothergameproj\main.cpp(176): warning C4018: '<' : signed/unsigned mismatch
+     1>d:\justanothergame\justanothergameproj\justanothergameproj\main.cpp(191): warning C4018: '<' : signed/unsigned mismatch
+     1>d:\justanothergame\justanothergameproj\justanothergameproj\main.cpp(220): warning C4018: '<' : signed/unsigned mismatch
+     1>d:\justanothergame\justanothergameproj\justanothergameproj\main.cpp(235): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>d:\justanothergame\justanothergameproj\justanothergameproj\main.cpp(239): warning C4018: '<' : signed/unsigned mismatch
+     1>d:\justanothergame\justanothergameproj\justanothergameproj\main.cpp(242): warning C4018: '<' : signed/unsigned mismatch
+     1>d:\justanothergame\justanothergameproj\justanothergameproj\main.cpp(245): warning C4018: '<' : signed/unsigned mismatch
+     1>d:\justanothergame\justanothergameproj\justanothergameproj\main.cpp(252): warning C4018: '<' : signed/unsigned mismatch
+     1>d:\justanothergame\justanothergameproj\justanothergameproj\main.cpp(255): warning C4018: '<' : signed/unsigned mismatch
+     1>d:\justanothergame\justanothergameproj\justanothergameproj\main.cpp(258): warning C4018: '<' : signed/unsigned mismatch
        Link:
          D:\VS13\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\JustAnotherGame\JustAnotherGameProj\Debug\JustAnotherGameProj.exe" /INCREMENTAL /NOLOGO /LIBPATH:"D:\JustAnotherGame\Libs\SFML-2.4.2\lib" /LIBPATH:.\lib "sfml-graphics-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" Box2D.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\JustAnotherGame\JustAnotherGameProj\Debug\JustAnotherGameProj.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\JustAnotherGame\JustAnotherGameProj\Debug\JustAnotherGameProj.lib" /MACHINE:X86 Debug\Level.obj
          Debug\main.obj
@@ -28,4 +41,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.69
+Time Elapsed 00:00:00.67
