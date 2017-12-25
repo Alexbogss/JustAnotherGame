@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="2017.12.07" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" infinite="0" nextobjectid="19">
+<map version="1.0" tiledversion="2017.12.07" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" infinite="0" nextobjectid="23">
  <tileset firstgid="1" source="tileset.tsx"/>
  <tileset firstgid="703" name="tail1" tilewidth="16" tileheight="16" tilecount="702" columns="39">
   <image source="tileset.png" trans="6d9fb9" width="630" height="302"/>
@@ -409,13 +409,15 @@
   </data>
  </layer>
  <objectgroup name="Слой объектов 1">
-  <object id="1" name="player" gid="274" x="17" y="255" width="16" height="16"/>
+  <object id="1" name="player" gid="274" x="23" y="245" width="16" height="16"/>
   <object id="3" name="block" x="0" y="255.363" width="320" height="63"/>
   <object id="4" name="block" x="112.417" y="240.333" width="95.3333" height="15"/>
   <object id="5" name="block" x="144.5" y="224.458" width="44.6667" height="15"/>
   <object id="10" name="block" x="240.396" y="224" width="30.9375" height="31"/>
   <object id="16" name="coin" gid="112" x="64.6667" y="256" width="16" height="16"/>
-  <object id="17" name="coin" gid="73" x="112.667" y="207.5" width="16" height="16"/>
-  <object id="18" name="coin" gid="34" x="160.5" y="190.917" width="16" height="16"/>
+  <object id="17" name="coin" gid="73" x="112.917" y="217.75" width="16" height="16"/>
+  <object id="18" name="coin" gid="34" x="160.5" y="203.167" width="16" height="16"/>
+  <object id="19" name="block" x="0" y="127" width="15" height="127"/>
+  <object id="22" name="block" x="304.167" y="127.167" width="15" height="127"/>
  </objectgroup>
 </map>

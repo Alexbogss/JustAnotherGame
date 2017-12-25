@@ -44,16 +44,16 @@ bool Level::LoadFromFile(std::string fname)
 	tilesetElmt = map->FirstChildElement("tileset");
 	this->firstTileID = atoi(tilesetElmt->Attribute("firstgid"));
 
-	/*
+	
 		// Парсинг пути к тайлсету
 	TiXmlElement *imgElmt;
 	imgElmt = tilesetElmt->FirstChildElement("image");
 	std::string imgPath = imgElmt->Attribute("source");
-	*/
+	
 
 	sf::Image img;
 		// Загрузка тайлсета
-	if (!img.loadFromFile("tileset.png"))
+	if (!img.loadFromFile(imgPath))
 	{
 		std::cout << "Failed to load tileset\n";
 		return false;
