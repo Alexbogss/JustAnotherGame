@@ -156,7 +156,7 @@ int main()
 				window.close();
 		}
 
-		world.Step(1 / 200.0f * (enemy.size() / 2.0f + 1), 1, 1);
+		world.Step(1 / 400.0f * (enemy.size() / 2.0f + 1), 1, 1);
 
 		bool onGround = false;
 		b2Vec2 posTest = playerBody->GetPosition();
@@ -209,13 +209,16 @@ int main()
 				sound.play();
 		}
 		if (Keyboard::isKeyPressed(Keyboard::Escape))
-			window.close();
+			return 0;
+
+		if (playerBody->GetPosition().y > 200)
+			return 0;
 
 		bool check = false;
 
 		enemyLimit++;
 
-		if (enemyLimit == 140 && ((coin.size() > 0) || (enemy.size() > 0)))
+		if (enemyLimit == 75 && ((coin.size() > 0) || (enemy.size() > 0)))
 		{
 			for (b2ContactEdge* ce = playerBody->GetContactList(); ce; ce = ce->next)
 			{
@@ -268,7 +271,7 @@ int main()
 			}
 		}
 
-		if (enemyLimit == 700 && (enemy.size() > 0))
+		if (enemyLimit == 800 && (enemy.size() > 0))
 		{
 			enemyLimit = 0;
 			for (int i = 0; i < enemyBody.size(); i++)
