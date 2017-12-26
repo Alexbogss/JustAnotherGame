@@ -10,5 +10,8 @@ b2Body *playerBody;
 std::vector<Object> coin;
 std::vector<b2Body*> coinBody;
 
+std::vector<Object> crate;
+std::vector<b2Body*> crateBody;
+
 std::vector<Object> enemy;
 std::vector<b2Body*> enemyBody;
