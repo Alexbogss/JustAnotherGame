@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "main.h"
 
 using namespace sf;
@@ -6,6 +7,50 @@ using namespace sf;
 int main()
 {
 	srand(time(NULL));
+
+	Vector2i screenSize(800, 600);
+
+	RenderWindow window;
+	window.create(sf::VideoMode(screenSize.x, screenSize.y, 32), "Test");
+
+	Texture menu_texture1, menu_texture3, about_texture;
+	menu_texture1.loadFromFile("111.png");
+	menu_texture3.loadFromFile("333.png");
+	Sprite menu1(menu_texture1), menu3(menu_texture3), about(about_texture);
+	bool Menu = 1;
+	int MenuNum = 0;
+	menu1.setPosition(300, 200);
+	menu3.setPosition(300, 260);
+
+	static int frameLimit = 0;
+
+	while (Menu)
+	{
+		menu1.setColor(Color::White);
+		menu3.setColor(Color::White);
+		MenuNum = 0;
+		window.clear(Color(0, 0, 0));
+
+		if (IntRect(300, 200, 300, 50).contains(Mouse::getPosition(window))) { menu1.setColor(Color::Yellow); MenuNum = 1; }
+		if (IntRect(300, 260, 300, 50).contains(Mouse::getPosition(window))) { menu3.setColor(Color::Yellow); MenuNum = 3; }
+
+		if (Mouse::isButtonPressed(Mouse::Left))
+		{
+			if (MenuNum == 1) Menu = false;
+			if (MenuNum == 3) { window.close(); Menu = false; }
+		}
+
+		frameLimit++;
+		if (frameLimit == 500)
+		{
+			frameLimit = 0;
+			window.draw(menu1);
+			window.draw(menu3);
+
+			window.display();
+		}
+	}
+	frameLimit = 0;
 
 	Level level;
 	level.LoadFromFile("JAGfirst.tmx");
@@ -90,16 +135,14 @@ int main()
 	fixtureDef.friction = 0.0f;
 	playerBody->CreateFixture(&fixtureDef);
 
-	Vector2i screenSize(800, 600);
-
-	RenderWindow window;
-	window.create(sf::VideoMode(screenSize.x, screenSize.y, 32), "Test");
-
 	View view;
 	view.reset(FloatRect(0.0f, 0.0f, screenSize.x, screenSize.y));
 	view.setViewport(FloatRect(0.0f, 0.0f, 4.0f, 4.0f));
 
-	static int frameLimit = 0;
+	SoundBuffer buffer;
+	buffer.loadFromFile("Jump.ogg");
+	Sound sound(buffer);
+
 	static int enemyLimit = 0;
 
 	while (window.isOpen())
@@ -113,7 +156,7 @@ int main()
 		}
 
 		world.Step(1 / 400.0f * (enemy.size() / 2.0f + 1), 1, 1);
-		
+
 		bool onGround = false;
 		b2Vec2 posTest = playerBody->GetPosition();
 		posTest.y += tileSize.y;
@@ -159,15 +202,18 @@ int main()
 			playerBody->ApplyLinearImpulse(b2Vec2(-0.12f, 0.0f), playerBody->GetWorldCenter(), true);
 			
 		if (Keyboard::isKeyPressed(Keyboard::W) && onGround && (playerVel.y > -3.0f))
-			playerBody->ApplyLinearImpulse(b2Vec2(0.0f, -0.7f), playerBody->GetWorldCenter(), true);
+		{
+			playerBody->ApplyLinearImpulse(b2Vec2(0.0f, -0.5f), playerBody->GetWorldCenter(), true);
+			if (!sound.getStatus())
+				sound.play();
+		}
 
 		bool check = false;
 
 		enemyLimit++;
 
-		if (enemyLimit == 320 && ((coin.size() > 0) || (enemy.size() > 0)))
+		if (enemyLimit == 140 && ((coin.size() > 0) || (enemy.size() > 0)))
 		{
-			enemyLimit = 0;
 			for (b2ContactEdge* ce = playerBody->GetContactList(); ce; ce = ce->next)
 			{
 				b2Contact* contact = ce->contact;
@@ -178,6 +224,7 @@ int main()
 					{
 						if (contact->GetFixtureA() == coinBody[i]->GetFixtureList())
 						{
+							sound.play();
 							coinBody[i]->DestroyFixture(coinBody[i]->GetFixtureList());
 							coin.erase(coin.begin() + i);
 							coinBody.erase(coinBody.begin() + i);
@@ -196,7 +243,7 @@ int main()
 							if (playerBody->GetPosition().y < enemyBody[i]->GetPosition().y)
 							{
 								playerBody->SetLinearVelocity(b2Vec2(0.0f, -3.0f));
-
+								sound.play();
 								enemyBody[i]->DestroyFixture(enemyBody[i]->GetFixtureList());
 								enemy.erase(enemy.begin() + i);
 								enemyBody.erase(enemyBody.begin() + i);
@@ -205,7 +252,8 @@ int main()
 							{
 								int tmp = (playerBody->GetPosition().x < enemyBody[i]->GetPosition().x)
 									? -1 : 1;
-								playerBody->SetLinearVelocity(b2Vec2(10.0f * tmp, -2.0f));
+								playerBody->SetLinearVelocity(b2Vec2(12.0f * tmp, 0.0f));
+								sound.play();
 							}
 							check = true;
 							break;
@@ -216,8 +264,9 @@ int main()
 			}
 		}
 
-		if (enemyLimit == 240 && (enemy.size() > 0))
+		if (enemyLimit == 700 && (enemy.size() > 0))
 		{
+			enemyLimit = 0;
 			for (int i = 0; i < enemyBody.size(); i++)
 			{
 				if (enemyBody[i]->GetLinearVelocity() == b2Vec2_zero)
