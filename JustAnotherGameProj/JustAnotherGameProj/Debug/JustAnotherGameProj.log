@@ -1,4 +1,4 @@
-﻿Build started 26.12.2017 21:53:01.
+﻿Build started 26.12.2017 21:57:24.
      1>Project "D:\JustAnotherGame\JustAnotherGameProj\JustAnotherGameProj\JustAnotherGameProj.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          D:\VS13\VC\bin\CL.exe /c /I"D:\JustAnotherGame\Libs\SFML-2.4.2\include" /I.\ /ZI /nologo /W3 /WX- /Od /Oy- /D SFML_DYNAMIC /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
@@ -44,4 +44,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.79
+Time Elapsed 00:00:00.81

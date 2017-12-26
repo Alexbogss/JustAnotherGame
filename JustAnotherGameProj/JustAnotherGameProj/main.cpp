@@ -156,7 +156,7 @@ int main()
 				window.close();
 		}
 
-		world.Step(1 / 200.0f * (enemy.size() / 2.0f + 1), 1, 1);
+		world.Step(1 / 160.0f * (enemy.size() / 2.0f + 1), 1, 1);
 
 		bool onGround = false;
 		b2Vec2 posTest = playerBody->GetPosition();
@@ -286,7 +286,7 @@ int main()
 
 		frameLimit++;
 
-		if (frameLimit == 30)
+		if (frameLimit == 10)
 		{
 			b2Vec2 pos = playerBody->GetPosition();
 			static b2Vec2 temp;
