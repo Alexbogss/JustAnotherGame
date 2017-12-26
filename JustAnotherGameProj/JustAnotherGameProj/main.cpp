@@ -156,7 +156,7 @@ int main()
 				window.close();
 		}
 
-		world.Step(1 / 400.0f * (enemy.size() / 2.0f + 1), 1, 1);
+		world.Step(1 / 200.0f * (enemy.size() / 2.0f + 1), 1, 1);
 
 		bool onGround = false;
 		b2Vec2 posTest = playerBody->GetPosition();
@@ -193,14 +193,14 @@ int main()
 		}
 
 		if (Keyboard::isKeyPressed(Keyboard::D) && (playerVel.x < 2.5f)  && (onGround))
-			playerBody->ApplyLinearImpulse(b2Vec2(0.3f, 0.0f), playerBody->GetWorldCenter(), true);
+			playerBody->ApplyLinearImpulse(b2Vec2(0.5f, 0.0f), playerBody->GetWorldCenter(), true);
 		else if (Keyboard::isKeyPressed(Keyboard::D) && (playerVel.x < 1.0f) && (!onGround))
-			playerBody->ApplyLinearImpulse(b2Vec2(0.12f, 0.0f), playerBody->GetWorldCenter(), true);
+			playerBody->ApplyLinearImpulse(b2Vec2(0.15f, 0.0f), playerBody->GetWorldCenter(), true);
 			
 		if (Keyboard::isKeyPressed(Keyboard::A) && (playerVel.x > -2.5f) && (onGround))
-			playerBody->ApplyLinearImpulse(b2Vec2(-0.3f, 0.0f), playerBody->GetWorldCenter(), true);
+			playerBody->ApplyLinearImpulse(b2Vec2(-0.5f, 0.0f), playerBody->GetWorldCenter(), true);
 		else if (Keyboard::isKeyPressed(Keyboard::A) && (playerVel.x > -1.0f) && (!onGround))
-			playerBody->ApplyLinearImpulse(b2Vec2(-0.12f, 0.0f), playerBody->GetWorldCenter(), true);
+			playerBody->ApplyLinearImpulse(b2Vec2(-0.15f, 0.0f), playerBody->GetWorldCenter(), true);
 			
 		if (Keyboard::isKeyPressed(Keyboard::W) && onGround && (playerVel.y > -3.0f))
 		{
