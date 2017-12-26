@@ -214,12 +214,12 @@ int main()
 		if (playerBody->GetPosition().y > 200)
 			return 0;
 
-		bool check = false;
-
 		enemyLimit++;
 
 		if (enemyLimit == 75 && ((coin.size() > 0) || (enemy.size() > 0)))
 		{
+			bool check = false;
+
 			for (b2ContactEdge* ce = playerBody->GetContactList(); ce; ce = ce->next)
 			{
 				b2Contact* contact = ce->contact;
@@ -286,7 +286,7 @@ int main()
 
 		frameLimit++;
 
-		if (frameLimit == 120)
+		if (frameLimit == 30)
 		{
 			b2Vec2 pos = playerBody->GetPosition();
 			static b2Vec2 temp;
