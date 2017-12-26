@@ -29,8 +29,7 @@ int main()
 		menu1.setColor(Color::White);
 		menu3.setColor(Color::White);
 		MenuNum = 0;
-		window.clear(Color(0, 0, 0));
-
+		
 		if (IntRect(300, 200, 300, 50).contains(Mouse::getPosition(window))) { menu1.setColor(Color::Yellow); MenuNum = 1; }
 		if (IntRect(300, 260, 300, 50).contains(Mouse::getPosition(window))) { menu3.setColor(Color::Yellow); MenuNum = 3; }
 
@@ -43,6 +42,8 @@ int main()
 		frameLimit++;
 		if (frameLimit == 500)
 		{
+			window.clear(Color(0, 0, 0));
+
 			frameLimit = 0;
 			window.draw(menu1);
 			window.draw(menu3);
@@ -155,7 +156,7 @@ int main()
 				window.close();
 		}
 
-		world.Step(1 / 400.0f * (enemy.size() / 2.0f + 1), 1, 1);
+		world.Step(1 / 200.0f * (enemy.size() / 2.0f + 1), 1, 1);
 
 		bool onGround = false;
 		b2Vec2 posTest = playerBody->GetPosition();
@@ -203,10 +204,12 @@ int main()
 			
 		if (Keyboard::isKeyPressed(Keyboard::W) && onGround && (playerVel.y > -3.0f))
 		{
-			playerBody->ApplyLinearImpulse(b2Vec2(0.0f, -0.5f), playerBody->GetWorldCenter(), true);
+			playerBody->ApplyLinearImpulse(b2Vec2(0.0f, -0.8f), playerBody->GetWorldCenter(), true);
 			if (!sound.getStatus())
 				sound.play();
 		}
+		if (Keyboard::isKeyPressed(Keyboard::Escape))
+			window.close();
 
 		bool check = false;
 
@@ -252,7 +255,8 @@ int main()
 							{
 								int tmp = (playerBody->GetPosition().x < enemyBody[i]->GetPosition().x)
 									? -1 : 1;
-								playerBody->SetLinearVelocity(b2Vec2(12.0f * tmp, 0.0f));
+								playerBody->SetLinearVelocity(b2Vec2(0, -3.0f));
+								playerBody->SetLinearVelocity(b2Vec2(5.0f * tmp, playerBody->GetLinearVelocity().y));
 								sound.play();
 							}
 							check = true;
