@@ -156,7 +156,7 @@ int main()
 				window.close();
 		}
 
-		world.Step(1 / 160.0f * (enemy.size() / 2.0f + 1), 1, 1);
+		world.Step(1 / 20.0f , 1, 1);
 
 		bool onGround = false;
 		b2Vec2 posTest = playerBody->GetPosition();
@@ -192,19 +192,19 @@ int main()
 			}
 		}
 
-		if (Keyboard::isKeyPressed(Keyboard::D) && (playerVel.x < 2.5f)  && (onGround))
+		if (Keyboard::isKeyPressed(Keyboard::D) && (playerVel.x < 1.5f)  && (onGround))
 			playerBody->ApplyLinearImpulse(b2Vec2(0.5f, 0.0f), playerBody->GetWorldCenter(), true);
 		else if (Keyboard::isKeyPressed(Keyboard::D) && (playerVel.x < 1.0f) && (!onGround))
 			playerBody->ApplyLinearImpulse(b2Vec2(0.15f, 0.0f), playerBody->GetWorldCenter(), true);
 			
-		if (Keyboard::isKeyPressed(Keyboard::A) && (playerVel.x > -2.5f) && (onGround))
+		if (Keyboard::isKeyPressed(Keyboard::A) && (playerVel.x > -1.5f) && (onGround))
 			playerBody->ApplyLinearImpulse(b2Vec2(-0.5f, 0.0f), playerBody->GetWorldCenter(), true);
 		else if (Keyboard::isKeyPressed(Keyboard::A) && (playerVel.x > -1.0f) && (!onGround))
 			playerBody->ApplyLinearImpulse(b2Vec2(-0.15f, 0.0f), playerBody->GetWorldCenter(), true);
 			
 		if (Keyboard::isKeyPressed(Keyboard::W) && onGround && (playerVel.y > -3.0f))
 		{
-			playerBody->ApplyLinearImpulse(b2Vec2(0.0f, -0.8f), playerBody->GetWorldCenter(), true);
+			playerBody->ApplyLinearImpulse(b2Vec2(0.0f, -3.0f), playerBody->GetWorldCenter(), true);
 			if (!sound.getStatus())
 				sound.play();
 		}
@@ -214,9 +214,9 @@ int main()
 		if (playerBody->GetPosition().y > 200)
 			return 0;
 
-		enemyLimit++;
+		
 
-		if (enemyLimit == 75 && ((coin.size() > 0) || (enemy.size() > 0)))
+		if ((coin.size() > 0) || (enemy.size() > 0))
 		{
 			bool check = false;
 
@@ -271,6 +271,7 @@ int main()
 			}
 		}
 
+		enemyLimit++;
 		if (enemyLimit == 800 && (enemy.size() > 0))
 		{
 			enemyLimit = 0;
@@ -284,10 +285,9 @@ int main()
 			}
 		}
 
-		frameLimit++;
+		//frameLimit++;
 
-		if (frameLimit == 10)
-		{
+		
 			b2Vec2 pos = playerBody->GetPosition();
 			static b2Vec2 temp;
 			static bool check = true;
@@ -334,7 +334,7 @@ int main()
 			window.display();
 
 			frameLimit = 0;
-		}
+		
 	}
 
 	return 0;
